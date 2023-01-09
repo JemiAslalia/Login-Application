@@ -1,0 +1,21 @@
+{
+  "name": "brendans_code_3909-project",
+  "version": "1.0.0",
+  "main": "Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "express-ws": "^5.0.2",
+    "mongodb": "^4.11.0",
+    "nunjucks": "^3.2.3",
+    "path": "^0.12.7",
+    "serve-index": "^1.9.1"
+  }
+}
