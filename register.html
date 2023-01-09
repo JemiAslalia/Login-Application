@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+</head>
+<body>
+<a href="/">Home</a>
+<form id= "myForm" method="post" action="/register" enctype="multipart/form-data">
+    <p id= "responseText"> Enter your details for registration </p>
+  <p>
+    <label for="fname">First Name:</label> 
+    <input type="text" name="fname" id="fname"> <br><br>
+    <label for="lname">Last Name:</label>
+    <input type="text" name="lname" id="lname"><br><br>
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email"><br><br>
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password"><br><br>
+    <p> Insert your profile photo </p>
+    <input type="file" name="myFile" accept="image/jpeg, image/png"><br><br>
+    <button name="submit" type="submit" onclick="submitForm()">Submit</button>
+  </p>
+</form>
+
+</body>
+ <script>
+
+function sendAjax(e){
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const formProps = Object.fromEntries(formData);
+    const urlEncoded = new URLSearchParams(formProps);
+
+    let request = new XMLHttpRequest();
+    request.addEventListener("load", () => {
+        let response = JSON.parse(request.responseText);
+        document.getElementById("responseText").innerHTML = response["message"];
+    });
+
+    request.open("POST", "/register");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send(urlEncoded.toString());
+}
+
+document.getElementById("myForm").onsubmit = sendAjax;
+
+function submitForm(){
+      window.location = "/products";
+    }
+
+</script>
+
+</html>
